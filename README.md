@@ -5,6 +5,7 @@
 Instead of searching every file individually, the program creates an **inverted index** that maps each word to the files in which it appears and stores the number of occurrences.
 
 🎯 Objectives
+
 Create an inverted index for multiple .txt files.
 Store words using a hash table.
 Maintain file-wise word counts.
