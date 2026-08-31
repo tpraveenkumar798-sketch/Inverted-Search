@@ -1,70 +1,25 @@
-# 🔎 Inverted Search
+📌 Project Overview
 
-A C-based Inverted Search application that creates an efficient word index from multiple text files using a hash table and linked lists.
+**Inverted Search** is a C programming project that creates an efficient word-based index from multiple text files.
 
-## 📌 Overview
+Instead of searching every file individually, the program creates an **inverted index** that maps each word to the files in which it appears and stores the number of occurrences.
 
-The Inverted Search project is designed to index words present in multiple text files and provide information about where each word occurs.
+🎯 Objectives
+Create an inverted index for multiple .txt files.
+Store words using a hash table.
+Maintain file-wise word counts.
+Search for words efficiently.
+Save the database into a backup file.
+Restore and update the database using a backup file.
+Add new text files to an existing database.
+Practice dynamic memory allocation and linked-list manipulation.
 
-The application creates an inverted database that stores:
+⚙️ Features
+1️⃣ Create Database
 
-- The word
-- Number of files containing the word
-- File names
-- Number of occurrences of the word in each file
+Reads all the supplied text files and creates the inverted index.
 
-The project uses a 27-index hash table along with linked lists for efficient storage and searching.
-
-## ✨ Features
-
-- 🔹 Validate input text files
-- 🔹 Check file existence and empty files
-- 🔹 Detect duplicate file names
-- 🔹 Create an inverted search database
-- 🔹 Display the complete database
-- 🔹 Search for a specific word
-- 🔹 Display file count and word frequency
-- 🔹 Save the database into a backup file
-- 🔹 Load and update an existing database
-- 🔹 Add new files to the existing database
-- 🔹 Dynamic memory allocation
-- 🔹 Colorful terminal output
-
-## 🧠 Data Structure
-
-The project uses a 27-index hash table.
-
-The hash table contains:
-
-- Index 0–25 → Words beginning with A–Z
-- Index 26 → Words beginning with other characters
-
-Each hash-table index contains a linked list of words.
-
-Each word node stores:
-
-- Word
-- File count
-- File list
-
-Each file node stores:
-
-- File name
-- Word count
-
-## ⚙️ How It Works
-
-1. The program accepts multiple .txt files through command-line arguments.
-2. Each file is validated before processing.
-3. The contents of the files are read word by word.
-4. A hash index is calculated for each word.
-5. The word is stored in the corresponding hash-table index.
-6. File names and word frequencies are maintained using linked lists.
-7. The generated database can be displayed, searched, saved, or updated.
-
-## 📋 Menu Options
-
-The application provides the following operations:
+Select your choice among following operations:
 
 1. Create Database
 2. Display Database
@@ -72,204 +27,365 @@ The application provides the following operations:
 4. Search
 5. Update Database
 6. Exit
+2️⃣ Display Database
 
-### 1️⃣ Create Database
-
-Creates the inverted database using the validated text files.
-
-The database stores each unique word along with the files in which it occurs and its frequency.
-
-### 2️⃣ Display Database
-
-Displays the complete inverted database in a structured format.
-
-The output contains:
-
-Index | Word | File Count | File Name | Word Count
+Displays the complete inverted index in a tabular format.
 
 Example:
 
-Index: 7
-Word: hello
-File Count: 2
-File 1: file1.txt
-Word Count: 3
-File 2: file2.txt
-Word Count: 2
++-------+----------------+------------+----------------------+------------+
+| Index | Word           | File Count | File Name            | Word Count |
++-------+----------------+------------+----------------------+------------+
+| 0     | An             | 1          | s1.txt               | 1          |
+| 0     | an             | 1          | s1.txt               | 2          |
+| 5     | file           | 2          | s1.txt               | 2          |
+|       |                |            | new.txt              | 1          |
++-------+----------------+------------+----------------------+------------+
+3️⃣ Save Database
 
-### 3️⃣ Save Database
+The generated database can be saved into a backup file.
 
-Saves the complete database into a backup file.
+Example:
 
-The backup file contains the indexed information required to restore the database later.
+Enter the backup file name: backup.txt
 
-### 4️⃣ Search
+Database saved successfully in backup.txt
 
-Allows the user to search for a particular word.
+The backup file stores:
 
-For example:
+Hash index
+Word
+File count
+File names
+Word counts
+4️⃣ Search
 
-Enter the word you want to search: hello
+Allows the user to search for a specific word.
 
 The program displays:
 
-- Number of files containing the word
-- File names
-- Number of occurrences in each file
+Whether the word exists
+Number of files containing the word
+File names
+Number of occurrences in each file
+5️⃣ Update Database
+
+The update operation allows a previously saved database to be loaded from a backup file and a new .txt file to be added.
 
 Example:
 
-Word hello is present in 2 files.
+Enter backup file name: backup.txt
+Enter new file name: new.txt
 
-IN FILE: file1.txt, word hello is present 3 times.
+Database updated successfully
 
-IN FILE: file2.txt, word hello is present 2 times.
+If the file is already present:
 
-### 5️⃣ Update Database
+File new.txt already exists in backup
 
-Loads an existing backup database and adds a new text file.
+This prevents duplicate files from being added.
 
-The program validates the backup file and the new input file before updating the database.
+6️⃣ Exit
 
-### 6️⃣ Exit
+Safely exits the program and frees dynamically allocated memory.
 
-Exits the application and clears the dynamically allocated database memory.
+🧠 Data Structures Used
 
-## 🔐 File Validation
+The project mainly uses a Hash Table + Linked Lists.
 
-Before creating the database, the program validates the input files.
+Hash Table
 
-The following checks are performed:
+The hash table contains 27 indexes:
 
-- ✔️ File name validation
-- ✔️ .txt extension validation
-- ✔️ File existence
-- ✔️ Empty file detection
-- ✔️ Duplicate file detection
+0 - 25 → Alphabet-based indexes
+26     → Special characters / numbers
 
-Only valid files are added to the file list.
+Each index points to a linked list of main nodes.
 
-## 💾 Database Backup
+Hash Table
+   |
+   +-- [0] --> Main Node --> Main Node
+   |
+   +-- [1] --> Main Node
+   |
+   +-- [2] --> Main Node --> Main Node
+   |
+   ...
+   |
+   +-- [26] --> Main Node
+Main Node
 
-The database can be stored in a backup file.
+Each main node stores:
 
-The saved database contains information such as:
+Word
+File Count
+Sub Node Link
+Main Node Link
 
-- Index
-- Word
-- File Count
-- File Name
-- Word Count
+Example:
 
-The backup file can later be loaded using the Update Database option.
+       Word: file
+       File Count: 2
+             |
+             v
+        +----------+
+        | s1.txt   |
+        | count: 2 |
+        +----------+
+             |
+             v
+        +----------+
+        | new.txt  |
+        | count: 1 |
+        +----------+
+Sub Node
 
-## 🏗️ Project Structure
+The sub node stores:
 
+File name
+Number of occurrences
+Link to the next file
+
+🏗️ Project Structure
 Inverted_search/
 │
 ├── inverted.h
 ├── inverted.c
+├── main.c
 ├── create.c
 ├── display.c
-├── insertl.c
-├── main.c
-├── save.c
 ├── search.c
+├── save.c
 ├── update.c
-├── makefile
-├── README.md
+├── insertl.c
+├── Makefile
+│
 ├── s.txt
 ├── s1.txt
+├── new.txt
+│
 └── backup.txt
 
-## 📂 File Description
+📂 File Description
+File	Description
+main.c	Main menu and program execution
+inverted.h	Structures, macros and function declarations
+inverted.c	File validation and hash index calculation
+create.c	Creates the inverted database
+display.c	Displays the database
+search.c	Searches for words
+save.c	Saves database to backup file
+update.c	Loads backup and adds new files
+insertl.c	Handles file linked-list insertion
+Makefile	Automates compilation
+backup.txt	Stores saved database
+*.txt	Input text files
 
-| File | Description |
-|------|-------------|
-| main.c | Contains the main function and menu-driven interface |
-| inverted.h | Contains structures, macros and function declarations |
-| inverted.c | Performs file validation and hash-index calculation |
-| create.c | Creates the inverted database |
-| display.c | Displays the complete database |
-| insertl.c | Handles insertion of files into the linked list |
-| search.c | Searches for a word in the database |
-| save.c | Saves the database into a backup file |
-| update.c | Loads and updates an existing database |
-| makefile | Compiles and cleans the project |
+🔄 Program Workflow
+             Input Text Files
+                    |
+                    v
+            Validate Files
+                    |
+                    v
+             Create Database
+                    |
+                    v
+              Hash Table
+                    |
+        +-----------+-----------+
+        |           |           |
+        v           v           v
+     Display      Search       Save
+                                |
+                                v
+                           backup.txt
+                                |
+                                v
+                            Update
+                                |
+                                v
+                          New .txt File
+🛠️ Technologies Used
 
-## 🛠️ Technologies Used
+C Programming
+Data Structures
+Hash Tables
+Linked Lists
+File Handling
+Dynamic Memory Allocation
+Pointers
+String Manipulation
+Makefile
+Linux / WSL
+💻 Compilation
+Using Makefile
 
-- C Programming
-- Data Structures
-- Hash Tables
-- Linked Lists
-- Dynamic Memory Allocation
-- File Handling
-- String Manipulation
-- Command Line Arguments
-- Makefile
-- Git & GitHub
-
-## 🚀 Compilation
-
-Clone the repository using:
-
-git clone <your-repository-url>
-
-Navigate to the project directory:
-
-cd Inverted_search
-
-Compile the project using the Makefile:
+Open the terminal inside the project directory:
 
 make
 
-## ▶️ How to Run
+This generates:
 
-Run the program by providing text files as command-line arguments:
+inverted_search
+Run the Program
+./inverted_search s.txt s1.txt
 
-./inv.exe s.txt s1.txt
+You can provide multiple text files:
 
-Multiple text files can be provided:
+./inverted_search file1.txt file2.txt file3.txt
 
-./inv.exe file1.txt file2.txt file3.txt
+🧹 Clean Build Files
 
-The program first validates the files and displays the validated file names.
-
-## 🧹 Clean the Project
-
-To remove object files and executable files:
+To remove object files and the executable:
 
 make clean
 
-## 🎯 Learning Outcomes
+Then rebuild:
 
-This project provides practical experience with:
+make
 
-- Hash table implementation
-- Linked list implementation
-- Dynamic memory allocation
-- Structures and pointers
-- File handling in C
-- Command-line arguments
-- String processing
-- Database creation and updating
-- Searching and indexing techniques
-- Modular C programming
-- Makefile-based compilation
+📝 Example Usage
+Step 1: Run
+./inverted_search s.txt s1.txt
+Step 2: Create Database
+Enter your choice : 1
 
-## 🌟 Applications
+Database created successfully
+Step 3: Display
+Enter your choice : 2
 
-The concept of inverted indexing can be used in:
+The inverted database will be displayed.
 
-- 🔎 Search engines
-- 📚 Document indexing systems
-- 📄 File search applications
-- 🗂️ Document management systems
-- 🔍 Text retrieval systems
+Step 4: Save
+Enter your choice : 3
 
-## 👨‍💻 Author
+Enter the backup file name: backup.txt
 
-SHREEVATHSA
+Database saved successfully in backup.txt
+Step 5: Update
+Enter your choice : 5
 
+Enter backup file name: backup.txt
+Enter new file name: new.txt
 
+Database updated successfully
+
+The new file's words are added to the existing database.
+
+🔐 Update Database Logic
+
+The update operation follows this process:
+
+              backup.txt
+                  |
+                  v
+          Validate Backup
+                  |
+                  v
+          Load Previous Data
+                  |
+                  v
+             Hash Table
+                  |
+                  v
+          Enter New .txt File
+                  |
+                  v
+          Validate New File
+                  |
+                  v
+       Check Duplicate File
+             /          \
+           Yes           No
+            |             |
+            v             v
+          Reject      Add File
+                          |
+                          v
+                  Create Database
+                          |
+                          v
+                    Updated HT
+📄 Backup File
+
+The database can be stored in a structured format such as:
+
+#0;An;1;s1.txt;1;#
+#5;file;2;s1.txt;2;new.txt;1;#
+#8;is;2;s.txt;1;s1.txt;4;#
+
+The backup can later be used to reconstruct the database.
+
+💡 Concepts Demonstrated
+
+This project demonstrates practical implementation of:
+
+Data Structures
+Hash Table
+Singly Linked List
+Multi-level Linked List
+C Programming
+Structures
+Pointers
+Dynamic memory allocation
+Functions
+Arrays
+Strings
+File handling
+File Operations
+fopen()
+fclose()
+fscanf()
+fprintf()
+fgets()
+fgetc()
+Memory Management
+malloc()
+free()
+
+🚀 Future Enhancements
+
+Possible improvements include:
+
+Case-insensitive searching
+Removing punctuation from words
+Sorting words alphabetically
+Improved search performance
+Support for larger text files
+Better backup validation
+Search suggestions
+GUI-based interface
+Support for more file formats
+🎓 Learning Outcome
+
+Through this project, I gained practical experience in:
+
+Designing data structures
+Implementing hash tables
+Working with linked lists
+Handling files in C
+Managing dynamic memory
+Using pointers and structures
+Building modular C programs
+Creating and using Makefiles
+Working with Linux/WSL
+Implementing database save and update functionality
+👨‍💻 Author
+
+T Praveen Kumar
+
+C Programmer | Embedded Systems Enthusiast | Data Structures
+
+⭐ Project Highlights
+✔ Hash Table Implementation
+✔ Linked List Implementation
+✔ Multiple File Processing
+✔ Word Frequency Counting
+✔ Word Search
+✔ Database Display
+✔ Database Save
+✔ Database Update
+✔ Backup File Handling
+✔ Dynamic Memory Management
+✔ Makefile Build System
