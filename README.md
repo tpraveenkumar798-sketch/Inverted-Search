@@ -15,81 +15,6 @@ Restore and update the database using a backup file.
 Add new text files to an existing database.
 Practice dynamic memory allocation and linked-list manipulation.
 
-⚙️ Features
-1️⃣ Create Database
-
-Reads all the supplied text files and creates the inverted index.
-
-Select your choice among following operations:
-
-1. Create Database
-2. Display Database
-3. Save Database
-4. Search
-5. Update Database
-6. Exit
-2️⃣ Display Database
-
-Displays the complete inverted index in a tabular format.
-
-Example:
-
-+-------+----------------+------------+----------------------+------------+
-| Index | Word           | File Count | File Name            | Word Count |
-+-------+----------------+------------+----------------------+------------+
-| 0     | An             | 1          | s1.txt               | 1          |
-| 0     | an             | 1          | s1.txt               | 2          |
-| 5     | file           | 2          | s1.txt               | 2          |
-|       |                |            | new.txt              | 1          |
-+-------+----------------+------------+----------------------+------------+
-3️⃣ Save Database
-
-The generated database can be saved into a backup file.
-
-Example:
-
-Enter the backup file name: backup.txt
-
-Database saved successfully in backup.txt
-
-The backup file stores:
-
-Hash index
-Word
-File count
-File names
-Word counts
-4️⃣ Search
-
-Allows the user to search for a specific word.
-
-The program displays:
-
-Whether the word exists
-Number of files containing the word
-File names
-Number of occurrences in each file
-5️⃣ Update Database
-
-The update operation allows a previously saved database to be loaded from a backup file and a new .txt file to be added.
-
-Example:
-
-Enter backup file name: backup.txt
-Enter new file name: new.txt
-
-Database updated successfully
-
-If the file is already present:
-
-File new.txt already exists in backup
-
-This prevents duplicate files from being added.
-
-6️⃣ Exit
-
-Safely exits the program and frees dynamically allocated memory.
-
 🧠 Data Structures Used
 
 The project mainly uses a Hash Table + Linked Lists.
@@ -148,6 +73,7 @@ Number of occurrences
 Link to the next file
 
 🏗️ Project Structure
+
 Inverted_search/
 │
 ├── inverted.h
@@ -168,6 +94,7 @@ Inverted_search/
 └── backup.txt
 
 📂 File Description
+
 File	Description
 main.c	Main menu and program execution
 inverted.h	Structures, macros and function declarations
@@ -183,6 +110,7 @@ backup.txt	Stores saved database
 *.txt	Input text files
 
 🔄 Program Workflow
+
              Input Text Files
                     |
                     v
@@ -219,7 +147,9 @@ Pointers
 String Manipulation
 Makefile
 Linux / WSL
+
 💻 Compilation
+
 Using Makefile
 
 Open the terminal inside the project directory:
@@ -247,12 +177,15 @@ Then rebuild:
 make
 
 📝 Example Usage
+
 Step 1: Run
 ./inverted_search s.txt s1.txt
+
 Step 2: Create Database
 Enter your choice : 1
 
 Database created successfully
+
 Step 3: Display
 Enter your choice : 2
 
@@ -264,6 +197,7 @@ Enter your choice : 3
 Enter the backup file name: backup.txt
 
 Database saved successfully in backup.txt
+
 Step 5: Update
 Enter your choice : 5
 
@@ -358,6 +292,7 @@ Better backup validation
 Search suggestions
 GUI-based interface
 Support for more file formats
+
 🎓 Learning Outcome
 
 Through this project, I gained practical experience in:
@@ -372,6 +307,7 @@ Building modular C programs
 Creating and using Makefiles
 Working with Linux/WSL
 Implementing database save and update functionality
+
 👨‍💻 Author
 
 T Praveen Kumar
@@ -379,14 +315,25 @@ T Praveen Kumar
 C Programmer | Embedded Systems Enthusiast | Data Structures
 
 ⭐ Project Highlights
+
 ✔ Hash Table Implementation
+
 ✔ Linked List Implementation
+
 ✔ Multiple File Processing
+
 ✔ Word Frequency Counting
+
 ✔ Word Search
+
 ✔ Database Display
+
 ✔ Database Save
+
 ✔ Database Update
+
 ✔ Backup File Handling
+
 ✔ Dynamic Memory Management
+
 ✔ Makefile Build System
