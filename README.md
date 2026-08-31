@@ -30,18 +30,14 @@ Each index points to a linked list of main nodes.
 
 Hash Table
 
-   |
    +-- [0] --> Main Node --> Main Node
-   |
    
    +-- [1] --> Main Node
-   |
    
    +-- [2] --> Main Node --> Main Node
-   |
    ...
-   |
-   
+   ...
+   ...
    +-- [26] --> Main Node
    
 Main Node
@@ -58,15 +54,13 @@ Example:
        Word: file
        File Count: 2
              |
-             v
-             
+             v   
         +----------+
         | s1.txt   |
         | count: 2 |
         +----------+
              |
              v
-             
         +----------+
         | new.txt  |
         | count: 1 |
@@ -81,8 +75,8 @@ Link to the next file
 
 🏗️ Project Structure
 
-Inverted_search/
-│
+Inverted_search
+
 ├── inverted.h
 
 ├── inverted.c
@@ -102,14 +96,13 @@ Inverted_search/
 ├── insertl.c
 
 ├── Makefile
-│
+
 ├── s.txt
 
 ├── s1.txt
 
 ├── new.txt
 
-│
 └── backup.txt
 
 📂 File Description
