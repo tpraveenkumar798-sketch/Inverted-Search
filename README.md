@@ -35,9 +35,13 @@ Hash Table
    +-- [1] --> Main Node
    
    +-- [2] --> Main Node --> Main Node
+   
    ...
+   
    ...
+   
    ...
+   
    +-- [26] --> Main Node
    
 Main Node
